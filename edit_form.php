@@ -15,27 +15,20 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Form for editing pinned_users block instances.
+ * Form for editing simple_user_list block instances.
  *
- * @package     block_pinned_users
- * @copyright   2017 Sofia
+ * @package     block_simple_user_lists
+ * @copyright   2018 Evgeny Cherkashin
  * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-/**
- * Form for editing block_pinned_users block instances.
- *
- * @package    block_pinned_users
- * @copyright  2017 Sofia
- * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
- */
-class block_pinned_users_edit_form extends block_edit_form {
+class block_simple_user_list_edit_form extends block_edit_form {
 
 
     private function get_users()
     {
         global $DB, $OUTPUT, $PAGE;
-        
+
         $usernames = [];
 
         if(empty($this->block->config->users)) return [];
@@ -44,7 +37,7 @@ class block_pinned_users_edit_form extends block_edit_form {
         list($uids, $params) = $DB->get_in_or_equal($ids);
         $rs = $DB->get_recordset_select('user', 'id ' . $uids, $params, '', 'id,firstname,lastname,email');
 
-        foreach ($rs as $record) 
+        foreach ($rs as $record)
         {
             $usernames[$record->id] = fullname($record) . ' ' . $record->email;
         }
@@ -54,22 +47,22 @@ class block_pinned_users_edit_form extends block_edit_form {
     }
 
     /**
-     * Extends the configuration form for block_pinned_users.
+     * Extends the configuration form for block_simple_user_list.
      */
-    protected function specific_definition($mform) 
+    protected function specific_definition($mform)
     {
 
         // Section header title.
         $mform->addElement('header', 'configheader', get_string('blocksettings', 'block'));
 
         // Please keep in mind that all elements defined here must start with 'config_'.
-        $mform->addElement('text', 'config_title', get_string('pinned_users_title', 'block_pinned_users'));
+        $mform->addElement('text', 'config_title', get_string('simple_user_list_title', 'block_simple_user_list'));
         $mform->setType('config_title', PARAM_TEXT);
 
         $usernames = $this->get_users();
-        $mform->addElement('autocomplete', 'config_users', get_string('pinned_users_users', 'block_pinned_users'), $usernames, [
+        $mform->addElement('autocomplete', 'config_users', get_string('simple_user_list_users', 'block_simple_user_list'), $usernames, [
         	'multiple' => true,
-            'ajax' => 'tool_lp/form-user-selector',  
+            'ajax' => 'tool_lp/form-user-selector',
         ]);
         $mform->addRule('config_users', null, 'required');
 

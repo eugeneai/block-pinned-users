@@ -17,18 +17,18 @@
 /**
  * Plugin strings are defined here.
  *
- * @package     block_pinned_users
+ * @package     block_simple_user_list
  * @category    string
- * @copyright   2017 Sofia
+ * @copyright   2018 Evgeny Cherkashin
  * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 defined('MOODLE_INTERNAL') || die();
 
-$string['pluginname'] = 'Pinned Users';
-$string['pinned_users_title'] = 'Title';
-$string['pinned_users_users'] = 'Users';
+$string['pluginname'] = 'Simple User List';
+$string['simple_user_list_title'] = 'Title';
+$string['simple_user_list_users'] = 'Users';
 $string['empty'] = 'The list is empty';
 
-$string['pinned_users:addinstance'] = 'Add a pinned_users users block';
-$string['pinned_users:myaddinstance'] = 'Add a new pinned_users users to the My Moodle page';
+$string['simple_user_list:addinstance'] = 'Add a new user list block';
+$string['simple_user_list:myaddinstance'] = 'Add a new user list to My Moodle page';

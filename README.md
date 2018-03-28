@@ -1,11 +1,12 @@
 # Pinned Users #
 
-This plugins allowed you to pinned users you want
+This plugins allowed to show lists of users.
 
+## Inheritance ##
+
+This module is a modification of the project https://github.com/luhuiya/block-pinned-users.
 
 ## License ##
-
-2017 Sofia
 
 This program is free software: you can redistribute it and/or modify it under
 the terms of the GNU General Public License as published by the Free Software

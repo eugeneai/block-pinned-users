@@ -17,14 +17,14 @@
 /**
  * Plugin version and other meta-data are defined here.
  *
- * @package     block_pinned_users
- * @copyright   2017 Sofia
+ * @package     block_simple_user_list
+ * @copyright   2018 Evgeny Cherkshin
  * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 defined('MOODLE_INTERNAL') || die();
 
-$plugin->component = 'block_pinned_users';
-$plugin->release = '1.0';
-$plugin->version = 2017092210;
-$plugin->requires = 2017051500;
+$plugin->component = 'block_simple_user_list';
+$plugin->release = '0.1';
+$plugin->version = 2018032800;
+$plugin->requires = 2018032800;

@@ -15,41 +15,41 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Block pinned_users is defined here.
+ * Block simple_user_list is defined here.
  *
- * @package     block_pinned_users
- * @copyright   2017 Sofia
+ * @package     block_simple_user_list
+ * @copyright   2018 Evgeny Cherkashin
  * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 /**
- * pinned_users block.
+ * simple_user_list block.
  *
- * @package    block_pinned_users
- * @copyright  2017 Sofia
+ * @package    block_simple_user_list
+ * @copyright  2018 Evgeny Cherkashin
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-class block_pinned_users extends block_base {
+class block_simple_user_list extends block_base {
 
     /**
      * Initializes class member variables.
      */
     public function init() {
         // Needed by Moodle to differentiate between blocks.
-        $this->title = get_string('pluginname', 'block_pinned_users');
+        $this->title = get_string('pluginname', 'block_simple_user_list');
     }
-    
+
     private function get_users($ids)
     {
         global $DB, $OUTPUT, $PAGE;
-        
+
         $usernames = [];
         if(empty($ids)) return [];
 
         list($uids, $params) = $DB->get_in_or_equal($ids);
         $rs = $DB->get_recordset_select('user', 'id ' . $uids, $params, '', 'id,firstname,lastname,email,picture,imagealt,lastnamephonetic,firstnamephonetic,middlename,alternatename');
 
-        foreach ($rs as $record) 
+        foreach ($rs as $record)
         {
             $record->fullname = fullname($record);
             $record->identity = $record->email;
@@ -92,7 +92,7 @@ class block_pinned_users extends block_base {
 
         if (!empty($this->config->text)) {
             $this->content->text = $this->config->text;
-        } else 
+        } else
         {
             $userconfig = null;
             if(!empty($this->config->users))
@@ -102,15 +102,15 @@ class block_pinned_users extends block_base {
             $users = $this->get_users($userconfig);
             if(empty($users))
             {
-                $this->content->text = get_string('empty', 'block_pinned_users');
+                $this->content->text = get_string('empty', 'block_simple_user_list');
             }
             else
             {
                 $list = [];
-                foreach ($users as $id => $username) 
+                foreach ($users as $id => $username)
                 {
                     $link = html_writer::link(new moodle_url('/user/profile.php', array('id' => $id)), $username);
-                    $list[] = html_writer::tag('li', $link);   
+                    $list[] = html_writer::tag('li', $link);
                 }
                 $this->content->text = html_writer::tag('ul', implode('', $list));
             }
@@ -128,7 +128,7 @@ class block_pinned_users extends block_base {
 
         // Load user defined title and make sure it's never empty.
         if (empty($this->config->title)) {
-            $this->title = get_string('pluginname', 'block_pinned_users');
+            $this->title = get_string('pluginname', 'block_simple_user_list');
         } else {
             $this->title = $this->config->title;
         }

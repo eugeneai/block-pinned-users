@@ -3,8 +3,8 @@
 defined('MOODLE_INTERNAL') || die();
 
 $capabilities = array(
- 
-    'block/pinned_users:addinstance' => array(
+
+    'block/simple_user_list:addinstance' => array(
         'captype'      => 'read',
         'contextlevel' => CONTEXT_BLOCK,
         'archetypes' => array(
@@ -13,9 +13,9 @@ $capabilities = array(
         ),
         'clonepermissionsfrom' => 'moodle/site:manageblocks'
     ),
-    
 
-    'block/pinned_users:myaddinstance' => array(
+    // FIXME: Is this book really needed for us?
+    'block/simple_user_list:myaddinstance' => array(
         'riskbitmask'  => RISK_PERSONAL,
         'captype'      => 'read',
         'contextlevel' => CONTEXT_SYSTEM,
