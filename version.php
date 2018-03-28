@@ -27,4 +27,4 @@ defined('MOODLE_INTERNAL') || die();
 $plugin->component = 'block_simple_user_list';
 $plugin->release = '0.1';
 $plugin->version = 2018032800;
-$plugin->requires = 2018032800;
+$plugin->requires = 2017010100;
