@@ -47,11 +47,11 @@ class block_simple_user_list extends block_base {
         if(empty($ids)) return [];
 
         list($uids, $params) = $DB->get_in_or_equal($ids);
-        $rs = $DB->get_recordset_select('user', 'id ' . $uids, $params, '', 'id,firstname,lastname,email,picture,imagealt,lastnamephonetic,firstnamephonetic,middlename,alternatename');
+        $rs = $DB->get_recordset_select('user', 'id ' . $uids, $params, 'lastname', 'id,firstname,lastname,email,picture,imagealt,lastnamephonetic,firstnamephonetic,middlename,alternatename');
 
         foreach ($rs as $record)
         {
-            $record->fullname = fullname($record);
+            $record->fullname = $record->lastname . " " . $record->firstname ; // fullname($record);
             $record->identity = $record->email;
             $record->hasidentity = true;
 
